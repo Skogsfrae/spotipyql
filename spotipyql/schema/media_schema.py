@@ -101,7 +101,7 @@ class Artist(graphene.ObjectType):
       return [Track.track_from_api(track) for track in data['tracks']]
 
 
-class Query(graphene.ObjectType):
+class Query(object):
   artist = graphene.Field(Artist, id=graphene.String())
   album = graphene.Field(Album, id=graphene.String())
   track = graphene.Field(Track, id=graphene.String())
@@ -117,5 +117,3 @@ class Query(graphene.ObjectType):
   def resolve_artist(self, info, id):
     if 'sp' in g:
       return Artist.artist_from_api(g.sp.artist(id))
-
-schema = graphene.Schema(query=Query)
