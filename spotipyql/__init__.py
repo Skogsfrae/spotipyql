@@ -3,7 +3,7 @@ from flask import Flask, request
 from flask_graphql import GraphQLView
 
 from spotipyql import auth
-from spotipyql.schema.schema import schema
+from spotipyql.schema import schema
 
 
 def create_app(test_config=None):
