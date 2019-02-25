@@ -12,6 +12,7 @@ steps:
     SPOTIFY_SCOPES: 'user-read-private user-read-email'
   commands:
   - pip install pipenv
-  - pipenv install
-  - pipenv run pytest
+  - pipenv install -d
+  - pipenv shell
+  - pytest
 
