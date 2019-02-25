@@ -11,7 +11,7 @@ def with_app_context(f):
   @wraps(f)
   def get_context(*args, **kwargs):
     app = Flask(__name__)
-    app.config.from_object('spotipyql.config')
+    app.config.from_object('spotipyql.env_config')
 
     with app.app_context():
       client_credentials_manager = SpotifyClientCredentials(
