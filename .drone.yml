@@ -13,6 +13,5 @@ steps:
   commands:
   - pip install pipenv
   - pipenv install -d
-  - pipenv shell
-  - pytest
+  - pipenv run pytest
 
