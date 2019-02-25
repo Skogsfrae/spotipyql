@@ -1,0 +1,12 @@
+kind: pipeline
+name: default
+
+steps:
+- name: tests
+  image: python:3
+  commands:
+  - pip install pipenv
+  - pipenv install
+  - pipenv shell
+  - pytest
+
