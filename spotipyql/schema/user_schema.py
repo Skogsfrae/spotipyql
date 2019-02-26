@@ -1,11 +1,11 @@
-from datetime import datetime, date
-
 import graphene
-from graphene import Node, relay, Connection
 
 from flask import g
 
 from spotipyql.utils import filter_output
+
+import spotipyql.schema.playlist_schema as playlist_schema
+import spotipyql.schema.misc_schema as misc_schema
 
 
 class User(graphene.Interface):
@@ -13,9 +13,15 @@ class User(graphene.Interface):
   display_name = graphene.String()
   # TODO: external_urls
   # TODO: followers
-  # TODO: images
+  images = graphene.List(lambda: misc_schema.Image)
   type = graphene.String()
   uri = graphene.String()
+  playlists = graphene.List(lambda: playlist_schema.Playlist, first=graphene.Int(), offset=graphene.Int())
+
+  def resolve_playlists(self, info, first=10, offset=0):
+    if 'sp' in g:
+      data = g.sp.user_playlists(self.id, first, offset)
+      return [playlist_schema.Playlist.from_api(p, self) for p in data['items']]
 
 
 class PrivateUser(graphene.ObjectType):
@@ -31,7 +37,9 @@ class PrivateUser(graphene.ObjectType):
   def from_api(ApiData):
     fields = list(PrivateUser.__dict__.keys()) + list(User.__dict__.keys())
     data = filter_output(ApiData, fields)
-    return PrivateUser(**data)
+    user = PrivateUser(**data)
+    user.images = [misc_schema.Image(**img) for img in data['images']]
+    return user
 
 
 class PublicUser(graphene.ObjectType):
@@ -55,4 +63,4 @@ class Query(object):
 
   def resolve_public_user(self, info, id, **kwargs):
     if 'sp' in g:
-      return PublicUser.from_api(g.sp.public_user(id))
+      return PublicUser.from_api(g.sp.user(id))

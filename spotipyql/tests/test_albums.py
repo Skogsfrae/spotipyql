@@ -20,6 +20,11 @@ def test_get_album_by_id(snapshot):
       albumType
       releaseDate
       totalTraks
+      images{
+        url
+        height
+        width
+      }
       tracks{
         id
       }

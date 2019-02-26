@@ -1,12 +1,11 @@
 from datetime import datetime, date
 
 import graphene
-from graphene import Node, relay, Connection
 
 from flask import g
 
 from spotipyql.utils import filter_output
-
+import spotipyql.schema.misc_schema as misc_schema
 
 class Track(graphene.ObjectType):
   id = graphene.String()
@@ -51,12 +50,14 @@ class Album(graphene.ObjectType):
   type = graphene.String()
   tracks = graphene.List(lambda: Track)
   artists = graphene.List(lambda: Artist)
+  images = graphene.List(lambda: misc_schema.Image)
 
   @staticmethod
   def from_api(ApiData):
     data = filter_output(ApiData, Album.__dict__.keys())
     album = Album(**data)
     album._artists_ids = [i['id'] for i in data['artists']]
+    album.images = [misc_schema.Image(**img) for img in data['images']]
     return album
 
   def resolve_tracks(self, info, **kwargs):
@@ -79,11 +80,14 @@ class Artist(graphene.ObjectType):
   albums = graphene.List(lambda: Album)
   related_artists = graphene.List(lambda: Artist)
   top_tracks = graphene.List(lambda: Track, country=graphene.String())
+  images = graphene.List(lambda: misc_schema.Image)
 
   @staticmethod
   def from_api(ApiData):
     data = filter_output(ApiData, Artist.__dict__.keys())
-    return Artist(**data)
+    artist = Artist(**data)
+    artist.images = [misc_schema.Image(**img) for img in data['images']]
+    return artist
 
   def resolve_albums(self, info, **kwargs):
     if 'sp' in g:

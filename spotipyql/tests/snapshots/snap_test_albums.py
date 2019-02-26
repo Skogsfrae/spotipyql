@@ -19,9 +19,26 @@ snapshots['test_get_album_by_id 1'] = {
             'genres': [
             ],
             'id': '6zAFtprBsbpQDUcVTzhUoA',
+            'images': [
+                {
+                    'height': 640,
+                    'url': 'https://i.scdn.co/image/19947c3fe5a54060721aebea0b552dabab2a5c32',
+                    'width': 640
+                },
+                {
+                    'height': 300,
+                    'url': 'https://i.scdn.co/image/5e9a3b54eed85aa054e09476ce5263127f2ce622',
+                    'width': 300
+                },
+                {
+                    'height': 64,
+                    'url': 'https://i.scdn.co/image/ab0ad0bae8cd20e50021c9d49f92c57f539c7ab3',
+                    'width': 64
+                }
+            ],
             'label': 'Holy Records',
             'name': 'The Door Of Serenity',
-            'popularity': 5,
+            'popularity': 6,
             'releaseDate': '2008-07-07',
             'totalTraks': None,
             'tracks': [
