@@ -10,7 +10,15 @@ GraphQL schema for Spotify Web Api written in Python 3
 
 [![dockeri.co](https://dockeri.co/image/skogsfrae/spotipyql)](https://hub.docker.com/r/skogsfrae/spotipyql)
 
-## Instructions
+### Available env vars
+
+`SPOTIPY_CLIENT_ID='your-client-id'`
+
+`SPOTIPY_CLIENT_SECRET='your-secret'`
+
+`SPOTIFY_SCOPES='user-read-private user-read-email'`
+
+## Dev Instructions
 
 To try it out just 
 1. clone the repo
