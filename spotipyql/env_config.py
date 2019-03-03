@@ -1,6 +1,6 @@
 import os
 
-APP_SECRET = os.environ.get("APP_SECRET", default=None)
+SECRET_KEY = os.environ.get("APP_SECRET", default='my-secret')
 
 ENVIRONMENT_DEBUG = os.environ.get("DEBUG", default='False')
 if ENVIRONMENT_DEBUG.lower() in ("f", "false"):

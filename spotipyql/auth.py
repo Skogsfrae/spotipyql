@@ -41,6 +41,8 @@ def auth_required(f):
         if 'token' not in session:
             return redirect(url_for('auth.authenticate'))
 
+        # TODO: test if this works properly or if it rather uses the same Spotify
+        # instance for each call
         if 'sp' not in g:
           g.sp = Spotify(session['token']['access_token'])
 
@@ -48,7 +50,8 @@ def auth_required(f):
           g.soa = soa()
           
         if g.soa._is_token_expired(session['token']):
-          return redirect(url_for('auth.authenticate'))
+          session['token'] = g.soa.refresh_access_token(session['token']['refresh_token'])
+          #return redirect(url_for('auth.authenticate'))
         
         return f(*args, **kwargs)
     return decorated_function

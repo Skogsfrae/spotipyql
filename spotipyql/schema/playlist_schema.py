@@ -1,3 +1,5 @@
+import dateutil.parser
+
 import graphene
 
 from flask import g
@@ -18,6 +20,7 @@ class PlaylistTrack(graphene.ObjectType):
   @staticmethod
   def from_api(ApiData, publicUser):
     data = filter_output(ApiData, PlaylistTrack.__dict__.keys())
+    data['added_at'] = dateutil.parser.parse(data['added_at'])
     playlistTrack = PlaylistTrack(**data)
     playlistTrack.added_by = publicUser
     track_data = filter_output(data['track'], media_schema.Track.__dict__.keys())

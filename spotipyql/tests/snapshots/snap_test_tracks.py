@@ -20,7 +20,7 @@ snapshots['test_get_track_by_id 1'] = {
             'isLocal': 'false',
             'isPlayable': None,
             'name': 'Dreams Today',
-            'popularity': 34,
+            'popularity': 35,
             'previewUrl': 'https://p.scdn.co/mp3-preview/636b146cc6238523515178fd5102ddd651a033be?cid=5f7f9b9b2df043448b9bf03766fb36b0',
             'trackNumber': 8,
             'type': 'track',
