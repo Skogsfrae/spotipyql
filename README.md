@@ -52,83 +52,83 @@ List of [api endpoints](https://developer.spotify.com/documentation/web-api/refe
 ## Album
 - [x] Get album from id
 - [x] Get album tracks
-- [] Get a list of albums
+- [ ] Get a list of albums
 
 ## Artist
 - [x] Get artist from id
 - [x] Get artist's albums
 - [x] Get artist's top tracks
 - [x] Get artist's related artists
-- [] Get a list of artists
+- [ ] Get a list of artists
 
 ## Brows
-- [] Get a category
-- [] Get a category playlists
-- [] Get a multiple categories
-- [] Get a list of categories
-- [] Get a list of featured playlists
-- [] Get a list of new releases
-- [] Get reccomendations based on seeds
+- [ ] Get a category
+- [ ] Get a category playlists
+- [ ] Get a multiple categories
+- [ ] Get a list of categories
+- [ ] Get a list of featured playlists
+- [ ] Get a list of new releases
+- [ ] Get reccomendations based on seeds
 
 ## Follow
-- [] Check if Current User Follows Artists or Users
-- [] Check if Users Follow a Playlist
-- [] Follow Artists or Users
-- [] Follow a Playlist
-- [] Get User's Followed Artists
-- [] Unfollow Artists or Users
-- [] Unfollow a Playlist
+- [ ] Check if Current User Follows Artists or Users
+- [ ] Check if Users Follow a Playlist
+- [ ] Follow Artists or Users
+- [ ] Follow a Playlist
+- [ ] Get User's Followed Artists
+- [ ] Unfollow Artists or Users
+- [ ] Unfollow a Playlist
 
 ## Library
-- [] Check User's Saved Albums
-- [] Check User's Saved Tracks
-- [] Get Current User's Saved Albums
-- [] Get a User's Saved Tracks
-- [] Remove Albums for Current User
-- [] Remove User's Saved Tracks
-- [] Save Albums for Current User
-- [] Save Tracks for User	
+- [ ] Check User's Saved Albums
+- [ ] Check User's Saved Tracks
+- [ ] Get Current User's Saved Albums
+- [ ] Get a User's Saved Tracks
+- [ ] Remove Albums for Current User
+- [ ] Remove User's Saved Tracks
+- [ ] Save Albums for Current User
+- [ ] Save Tracks for User	
 
 ## Personalization
-- [] Get a User's Top Artists and Tracks
+- [ ] Get a User's Top Artists and Tracks
 
 ## Player 13
-- [] Get a User's Available Devices
-- [] Get Information About The User's Current Playback
-- [] Get Current User's Recently Played Tracks
-- [] Get the User's Currently Playing Track
-- [] Pause a User's Playback
-- [] Seek To Position In Currently Playing Track	
-- [] Set Repeat Mode On User’s Playback
-- [] Set Volume For User's Playback
-- [] Skip User’s Playback To Next Track
-- [] Skip User’s Playback To Previous Track
-- [] Start/Resume a User's Playback	
-- [] Toggle Shuffle For User’s Playback
-- [] Transfer a User's Playback	
+- [ ] Get a User's Available Devices
+- [ ] Get Information About The User's Current Playback
+- [ ] Get Current User's Recently Played Tracks
+- [ ] Get the User's Currently Playing Track
+- [ ] Pause a User's Playback
+- [ ] Seek To Position In Currently Playing Track	
+- [ ] Set Repeat Mode On User’s Playback
+- [ ] Set Volume For User's Playback
+- [ ] Skip User’s Playback To Next Track
+- [ ] Skip User’s Playback To Previous Track
+- [ ] Start/Resume a User's Playback	
+- [ ] Toggle Shuffle For User’s Playback
+- [ ] Transfer a User's Playback	
 
 ## Playlist 12
-- [] Add Tracks to a Playlist
-- [] Change a Playlist's Details
-- [] Create a Playlist
+- [ ] Add Tracks to a Playlist
+- [ ] Change a Playlist's Details
+- [ ] Create a Playlist
 - [x] Get a List of Current User's Playlists
 - [x] Get a List of a User's Playlists
 - [x] Get a Playlist Cover Image
-- [] Get a Playlist
+- [ ] Get a Playlist
 - [x] Get a Playlist's Tracks
-- [] Remove Tracks from a Playlist	
-- [] Reorder a Playlist's Tracks
-- [] Replace a Playlist's Tracks
-- [] Upload a Custom Playlist Cover Image
+- [ ] Remove Tracks from a Playlist	
+- [ ] Reorder a Playlist's Tracks
+- [ ] Replace a Playlist's Tracks
+- [ ] Upload a Custom Playlist Cover Image
 
 ## Search 1
 - [x] Generic Search
 
 ## Tracks 5
-- [] Get Audio Analysis for a Track	
-- [] Get Audio Features for a Track
-- [] Get Audio Features for Several Tracks	
-- [] Get Several Tracks
+- [ ] Get Audio Analysis for a Track	
+- [ ] Get Audio Features for a Track
+- [ ] Get Audio Features for Several Tracks	
+- [ ] Get Several Tracks
 - [x] Get a Track
 
 ## Users Profile 2
