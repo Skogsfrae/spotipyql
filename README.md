@@ -92,7 +92,7 @@ List of [api endpoints](https://developer.spotify.com/documentation/web-api/refe
 ## Personalization
 - [ ] Get a User's Top Artists and Tracks
 
-## Player 13
+## Player
 - [ ] Get a User's Available Devices
 - [ ] Get Information About The User's Current Playback
 - [ ] Get Current User's Recently Played Tracks
@@ -107,7 +107,7 @@ List of [api endpoints](https://developer.spotify.com/documentation/web-api/refe
 - [ ] Toggle Shuffle For User’s Playback
 - [ ] Transfer a User's Playback	
 
-## Playlist 12
+## Playlist
 - [ ] Add Tracks to a Playlist
 - [ ] Change a Playlist's Details
 - [ ] Create a Playlist
@@ -121,16 +121,16 @@ List of [api endpoints](https://developer.spotify.com/documentation/web-api/refe
 - [ ] Replace a Playlist's Tracks
 - [ ] Upload a Custom Playlist Cover Image
 
-## Search 1
+## Search
 - [x] Generic Search
 
-## Tracks 5
+## Tracks
 - [ ] Get Audio Analysis for a Track	
 - [ ] Get Audio Features for a Track
 - [ ] Get Audio Features for Several Tracks	
 - [ ] Get Several Tracks
 - [x] Get a Track
 
-## Users Profile 2
+## Users Profile
 - [x] Get Current User's Profile
 - [x] Get a User's Profile	
