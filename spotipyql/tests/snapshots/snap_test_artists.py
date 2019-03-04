@@ -9,21 +9,19 @@ snapshots = Snapshot()
 
 snapshots['test_get_artist_by_id 1'] = {
     'data': {
-        'artist': None
-    },
-    'errors': [
-        {
-            'locations': [
-                {
-                    'column': 5,
-                    'line': 2
-                }
+        'artist': {
+            'genres': [
+                'dark wave',
+                'ethereal wave',
+                'medieval folk',
+                'neoclassical',
+                'rune folk'
             ],
-            'message': '''http status: 404, code:-1 - https://api.spotify.com/v1/artists/6zAFtprBsbpQDUcVTzhUoA:
- non existing id''',
-            'path': [
-                'artist'
-            ]
+            'id': '5HwQ6LgbaJ9OifrTioZmRi',
+            'name': 'Rajna',
+            'popularity': 19,
+            'type': 'artist',
+            'uri': 'spotify:artist:5HwQ6LgbaJ9OifrTioZmRi'
         }
-    ]
+    }
 }

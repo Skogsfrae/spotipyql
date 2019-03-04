@@ -9,7 +9,7 @@ def test_get_artist_by_id(snapshot):
   client = Client(schema)
 
   snapshot.assert_match(client.execute('''{
-    artist(id: "6zAFtprBsbpQDUcVTzhUoA"){
+    artist(id: "5HwQ6LgbaJ9OifrTioZmRi"){
       id
       name
       uri

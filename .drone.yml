@@ -15,22 +15,22 @@ steps:
   - pipenv install -d
   - pipenv run pytest
 
-- name: notification
-  image: appleboy/drone-telegram
-  token:
-    from_secret: token
-  to:
-    from_secret: username
-  message: >
-    {{#success build.status}}
-      Build {{build.number}} succeeded. Good job.
-    {{else}}
-      Build {{build.number}} failed. Fix me please.
-    {{/success}}
-      {{commit.sha}} - {{commit.link}}
-      ----
-      {{commit.message}}
-  when:
-    status:
-    - failure
-    - success
+# - name: notification
+#   image: appleboy/drone-telegram
+#   token:
+#     from_secret: token
+#   to:
+#     from_secret: username
+#   message: >
+#     {{#success build.status}}
+#       Build {{build.number}} succeeded. Good job.
+#     {{else}}
+#       Build {{build.number}} failed. Fix me please.
+#     {{/success}}
+#       {{commit.sha}} - {{commit.link}}
+#       ----
+#       {{commit.message}}
+#   when:
+#     status:
+#     - failure
+#     - success
