@@ -19,7 +19,7 @@ snapshots['test_get_artist_by_id 1'] = {
             ],
             'id': '5HwQ6LgbaJ9OifrTioZmRi',
             'name': 'Rajna',
-            'popularity': 19,
+            'popularity': 21,
             'type': 'artist',
             'uri': 'spotify:artist:5HwQ6LgbaJ9OifrTioZmRi'
         }

@@ -25,5 +25,22 @@ def test_get_track_by_id(snapshot):
       album{
         id
       }
+      audioFeatures{
+        id
+        acousticness
+        analysisUrl
+        danceability
+        durationMs
+        energy
+        instrumentalness
+        key
+        liveness
+        loudness
+        mode
+        speechiness
+        tempo
+        timeSignature
+        valence
+      }
     }
   }'''))

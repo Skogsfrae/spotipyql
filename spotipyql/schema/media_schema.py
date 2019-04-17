@@ -21,6 +21,7 @@ class Track(graphene.ObjectType):
   type = graphene.String()
   is_local = graphene.String()
   album = graphene.Field(lambda: Album)
+  audioFeatures = graphene.Field(lambda: AudioFeatures)
 
   @staticmethod
   def from_api(ApiData, album_id=None):
@@ -36,6 +37,9 @@ class Track(graphene.ObjectType):
     if 'sp' in g:
       return Album.from_api(g.sp.album(self._album_id))
 
+  def resolve_audioFeatures(self, info, **kwargs):
+    if 'sp' in g:
+      return AudioFeatures.from_api(g.sp.audio_features([self.id]))
 
 class Album(graphene.ObjectType):
   id = graphene.String()
@@ -105,10 +109,40 @@ class Artist(graphene.ObjectType):
       return [Track.from_api(track) for track in data['tracks']]
 
 
+class AudioFeatures(graphene.ObjectType):
+  id = graphene.String()
+  acousticness = graphene.Float()
+  analysis_url = graphene.String()
+  danceability = graphene.Float()
+  duration_ms = graphene.Int()
+  energy = graphene.Float()
+  instrumentalness = graphene.Float()
+  key = graphene.Int() # convert to enumeration
+  liveness = graphene.Float()
+  loudness = graphene.Float()
+  mode = graphene.Int() # convert to enumeration
+  speechiness = graphene.Float()
+  tempo = graphene.Float()
+  time_signature = graphene.Int()
+  valence = graphene.Float()
+  track = graphene.Field(lambda: Track)
+
+  @staticmethod
+  def from_api(ApiData):
+    data = filter_output(ApiData[0], AudioFeatures.__dict__.keys())
+    aFeat = AudioFeatures(**data)
+    return aFeat
+
+  def resolve_track(self, info, **kwargs):
+    if 'sp' in g:
+      return Track.from_api(g.sp.track(self.id))
+
+
 class Query(object):
   artist = graphene.Field(Artist, id=graphene.String())
   album = graphene.Field(Album, id=graphene.String())
   track = graphene.Field(Track, id=graphene.String())
+  audioFeatures = graphene.List(AudioFeatures, trackIds=graphene.List(graphene.String))
   
   def resolve_album(self, info, id):
     if 'sp' in g:
@@ -121,3 +155,7 @@ class Query(object):
   def resolve_artist(self, info, id):
     if 'sp' in g:
       return Artist.from_api(g.sp.artist(id))
+  
+  def resolve_audioFeatures(self, info, trackIds):
+    if 'sp' in g:
+      return [AudioFeatures.from_api(g.sp.audio_features(id)) for id in trackIds]
