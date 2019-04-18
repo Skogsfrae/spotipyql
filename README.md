@@ -126,8 +126,8 @@ List of [api endpoints](https://developer.spotify.com/documentation/web-api/refe
 
 ## Tracks
 - [ ] Get Audio Analysis for a Track	
-- [ ] Get Audio Features for a Track
-- [ ] Get Audio Features for Several Tracks	
+- [x] Get Audio Features for a Track
+- [x] Get Audio Features for Several Tracks	
 - [ ] Get Several Tracks
 - [x] Get a Track
 
