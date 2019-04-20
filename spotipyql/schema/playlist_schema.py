@@ -5,12 +5,14 @@ import graphene
 from flask import g
 
 from spotipyql.utils import filter_output
+from spotipyql.schema.custom_types import SpotifyObject, SpotifyID
+
 import spotipyql.schema.media_schema as media_schema
 import spotipyql.schema.user_schema as user_schema
 import spotipyql.schema.misc_schema as misc_schema
 
 
-class PlaylistTrack(graphene.ObjectType):
+class PlaylistTrack(SpotifyObject):
   added_at = graphene.DateTime()
   added_by = graphene.Field(lambda: user_schema.PublicUser)
   is_local = graphene.Boolean()
@@ -28,8 +30,8 @@ class PlaylistTrack(graphene.ObjectType):
     return playlistTrack
 
 
-class Playlist(graphene.ObjectType):
-  id = graphene.String()
+class Playlist(SpotifyObject):
+  id = SpotifyID()
   name = graphene.String()
   collaborative = graphene.Boolean()
   images = graphene.List(lambda: misc_schema.Image)

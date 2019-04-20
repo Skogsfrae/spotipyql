@@ -12,7 +12,9 @@
       "console": "none",
       "env": {
         "FLASK_APP": "spotipyql",
-        "FLASK_ENV": "development"
+        "FLASK_ENV": "development",
+        "SPOTIFY_SCOPES": "user-read-private user-read-email",
+        "SPOTIPY_REDIRECT_URI": "http://localhost:5000/callback"
       },
       "args": [
         "run",

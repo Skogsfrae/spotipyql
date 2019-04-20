@@ -5,10 +5,11 @@ import graphene
 from flask import g
 
 from spotipyql.utils import filter_output
+from spotipyql.schema.custom_types import SpotifyObject, SpotifyID
 import spotipyql.schema.misc_schema as misc_schema
 
-class Track(graphene.ObjectType):
-  id = graphene.String()
+class Track(SpotifyObject):
+  id = SpotifyID()
   name = graphene.String()
   uri = graphene.String()
   popularity = graphene.Int()
@@ -22,6 +23,7 @@ class Track(graphene.ObjectType):
   is_local = graphene.String()
   album = graphene.Field(lambda: Album)
   audioFeatures = graphene.Field(lambda: AudioFeatures)
+  audioAnalysis = graphene.Field(lambda: AudioAnalysis)
 
   @staticmethod
   def from_api(ApiData, album_id=None):
@@ -41,8 +43,12 @@ class Track(graphene.ObjectType):
     if 'sp' in g:
       return AudioFeatures.from_api(g.sp.audio_features([self.id]))
 
-class Album(graphene.ObjectType):
-  id = graphene.String()
+  def resolve_audioAnalysis(self, info, **kwargs):
+    if 'sp' in g:
+      return AudioAnalysis.from_api(g.sp.audio_analysis(self.id))
+
+class Album(SpotifyObject):
+  id = SpotifyID()
   name = graphene.String()
   uri = graphene.String()
   popularity = graphene.Int()
@@ -74,8 +80,8 @@ class Album(graphene.ObjectType):
       return [Artist.from_api(g.sp.artist(i)) for i in self._artists_ids]
 
 
-class Artist(graphene.ObjectType):
-  id = graphene.String()
+class Artist(SpotifyObject):
+  id = SpotifyID()
   name = graphene.String()
   uri = graphene.String()
   popularity = graphene.Int()
@@ -109,8 +115,8 @@ class Artist(graphene.ObjectType):
       return [Track.from_api(track) for track in data['tracks']]
 
 
-class AudioFeatures(graphene.ObjectType):
-  id = graphene.String()
+class AudioFeatures(SpotifyObject):
+  id = SpotifyID()
   acousticness = graphene.Float()
   analysis_url = graphene.String()
   danceability = graphene.Float()
@@ -138,10 +144,44 @@ class AudioFeatures(graphene.ObjectType):
       return Track.from_api(g.sp.track(self.id))
 
 
+class AudioAnalysis(SpotifyObject):
+  bars = graphene.List(lambda: misc_schema.TimeInterval)
+  beats = graphene.List(lambda: misc_schema.TimeInterval)
+  tatums = graphene.List(lambda: misc_schema.TimeInterval)
+  sections = graphene.List(lambda: misc_schema.Section)
+  segments = graphene.List(lambda: misc_schema.Segment)
+  tatums = graphene.List(lambda: misc_schema.TimeInterval)
+
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    self.api_data = kwargs
+
+  @staticmethod
+  def from_api(ApiData):
+    data = filter_output(ApiData, AudioAnalysis.__dict__.keys())
+    analysis = AudioAnalysis(**data)
+    return analysis
+
+  def resolve_bars(self, info):
+    return [misc_schema.TimeInterval(**ti) for ti in self.api_data['bars']]
+
+  def resolve_beats(self, info):
+    return [misc_schema.TimeInterval(**ti) for ti in self.api_data['beats']]
+
+  def resolve_tatums(self, info):
+    return [misc_schema.TimeInterval(**ti) for ti in self.api_data['tatums']]
+
+  def resolve_sections(self, info):
+    return [misc_schema.Section(**ti) for ti in self.api_data['sections']]
+
+  def resolve_segments(self, info):
+    return [misc_schema.Segment(**ti) for ti in self.api_data['segments']]
+
+
 class Query(object):
-  artist = graphene.Field(Artist, id=graphene.String())
-  album = graphene.Field(Album, id=graphene.String())
-  track = graphene.Field(Track, id=graphene.String())
+  artist = graphene.Field(Artist, id=SpotifyID())
+  album = graphene.Field(Album, id=SpotifyID())
+  track = graphene.Field(Track, id=SpotifyID())
   audioFeatures = graphene.List(AudioFeatures, trackIds=graphene.List(graphene.String))
   
   def resolve_album(self, info, id):

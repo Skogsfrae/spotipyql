@@ -3,13 +3,14 @@ import graphene
 from flask import g
 
 from spotipyql.utils import filter_output
+from spotipyql.schema.custom_types import SpotifyObject, SpotifyUserID
 
 import spotipyql.schema.playlist_schema as playlist_schema
 import spotipyql.schema.misc_schema as misc_schema
 
 
 class User(graphene.Interface):
-  id = graphene.String()
+  id = SpotifyUserID()
   display_name = graphene.String()
   # TODO: external_urls
   # TODO: followers
@@ -24,7 +25,7 @@ class User(graphene.Interface):
       return [playlist_schema.Playlist.from_api(p, self) for p in data['items']]
 
 
-class PrivateUser(graphene.ObjectType):
+class PrivateUser(SpotifyObject):
   class Meta:
     interfaces = (User,)
 
@@ -42,7 +43,7 @@ class PrivateUser(graphene.ObjectType):
     return user
 
 
-class PublicUser(graphene.ObjectType):
+class PublicUser(SpotifyObject):
   class Meta:
     interfaces = (User,)
 
@@ -55,7 +56,7 @@ class PublicUser(graphene.ObjectType):
 
 class Query(object):
   me = graphene.Field(PrivateUser)
-  public_user = graphene.Field(PublicUser, id=graphene.String())
+  public_user = graphene.Field(PublicUser, id=SpotifyUserID())
 
   def resolve_me(self, info, **kwargs):
     if 'sp' in g:
