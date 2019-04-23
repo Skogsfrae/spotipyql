@@ -41,11 +41,11 @@ class Track(SpotifyObject):
 
   def resolve_audioFeatures(self, info, **kwargs):
     if 'sp' in g:
-      return AudioFeatures.from_api(g.sp.audio_features([self.id]))
+      return AudioFeatures.from_api(g.sp.track_audio_features(self.id))
 
   def resolve_audioAnalysis(self, info, **kwargs):
     if 'sp' in g:
-      return AudioAnalysis.from_api(g.sp.audio_analysis(self.id))
+      return AudioAnalysis.from_api(g.sp.track_audio_analysis(self.id))
 
 class Album(SpotifyObject):
   id = SpotifyID()
