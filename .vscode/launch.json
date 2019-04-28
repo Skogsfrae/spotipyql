@@ -9,7 +9,7 @@
       "type": "python",
       "request": "launch",
       "module": "flask",
-      "console": "none",
+      "console": "internalConsole",
       "env": {
         "FLASK_APP": "spotipyql",
         "FLASK_ENV": "development",
