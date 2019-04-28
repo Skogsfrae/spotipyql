@@ -24,8 +24,6 @@ def callback():
   try:
     resp = current_app.spotify.authorized_response()
   except OAuthException as e:
-    print(e.message)
-    print(e.data)
     return e
 
   if resp is None:

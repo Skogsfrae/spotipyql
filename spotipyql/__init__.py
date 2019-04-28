@@ -29,7 +29,7 @@ def create_app(test_config=None):
                         consumer_secret = app.config['SPOTIPY_CLIENT_SECRET'],
                         base_url = 'https://api.spotify.com',
                         request_token_url = None,
-                        access_token_url = '/api/token',
+                        access_token_url = 'https://accounts.spotify.com/api/token',
                         authorize_url='https://accounts.spotify.com/authorize',
                         request_token_params = {'scope' : app.config['SPOTIFY_SCOPES']}
                     )
