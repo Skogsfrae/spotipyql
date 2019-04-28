@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a41f957220a236211842fa497dbe3900f92a7b4ed5d6f3736fb6023a2f748eda"
+            "sha256": "f34322f50e585b6b84b9842db76ec6c5742be6aa2c68cf693881260929431f0f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -113,6 +113,7 @@
                 "sha256:065c4f02ebe7f7cf559e49ee5a95fb800a9e4528727aec6f24402a5374c65013",
                 "sha256:14dd6caf1527abb21f08f86c784eac40853ba93edb79552aa1e4b8aef1b61c7b"
             ],
+            "index": "spotipyql",
             "version": "==2.10.1"
         },
         "markupsafe": {
@@ -204,6 +205,7 @@
                 "sha256:4c291ca23bbb55c76518905869ef34bdd5f0e46af7afe6861e8375643ffee1a0",
                 "sha256:9a247273df709c4fedb38c711e44292304f73f39ab01beda9f6b9fc375669ac3"
             ],
+            "index": "spotipyql",
             "version": "==1.24.2"
         },
         "werkzeug": {
