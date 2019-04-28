@@ -2,8 +2,6 @@ from functools import wraps
 from flask import Flask, session, redirect, request, Blueprint, current_app, abort, url_for, g
 from flask_oauthlib.client import OAuth, OAuthException
 
-from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
-from spotipy import Spotify
 from spotipyql.rest_client.client import SpotifyClient
 
 

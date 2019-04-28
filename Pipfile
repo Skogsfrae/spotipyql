@@ -6,7 +6,6 @@ name = "spotipyql"
 [packages]
 flask = "*"
 flask-graphql = "*"
-spotipy = "*"
 graphene = "*"
 python-dateutil = "*"
 requests-oauthlib = "< 1.2.0"

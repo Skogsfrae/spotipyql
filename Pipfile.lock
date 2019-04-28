@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5ab4fa1a0171a90c1254c5438f90578e37414497d934c39720b55f0979d5168a"
+            "sha256": "a41f957220a236211842fa497dbe3900f92a7b4ed5d6f3736fb6023a2f748eda"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -198,13 +198,6 @@
                 "sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
             ],
             "version": "==1.12.0"
-        },
-        "spotipy": {
-            "hashes": [
-                "sha256:4b05da481b5c5dd4d1da8c0f0d13ca805dde037db648d12be866244b19501ed1"
-            ],
-            "index": "spotipyql",
-            "version": "==2.4.4"
         },
         "urllib3": {
             "hashes": [
